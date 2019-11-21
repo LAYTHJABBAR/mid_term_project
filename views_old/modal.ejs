@@ -1,0 +1,46 @@
+  <!-- Modal -->
+  <link rel="stylesheet" href="styles/layout.css" type="text/css"/>
+  <section class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4><span class="glyphicon glyphicon-shopping-cart"></span>Order</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group"><label for="qty">QUANTITY</label>
+              <input type="number" class="form-control" id="qty" placeholder="How many?">
+            </div>
+            <div class="form-group"><label>SIZE</label>
+              <div class="radio">
+                <label class="radio-inline"><input type="radio" name="optradio">Small 9"</label>
+                <label class="radio-inline"><input type="radio" name="optradio">Medium 12"</label>
+                <label class="radio-inline"><input type="radio" name="optradio">Large 16"</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sel1">CRUST</label>
+                <select class="form-control" id="sel1">
+                  <option>Original Hand Tossed</option>
+                  <option>Thin Crust</option>
+                  <option>Deep Pan</option>
+                </select>
+            </div>
+              <button type="submit" class="btn btn-block">ADD
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+          </button>
+          <p>Need <a href="#">help?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
