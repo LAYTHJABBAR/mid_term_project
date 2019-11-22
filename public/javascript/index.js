@@ -20,22 +20,16 @@ $(() => {
       };
       orderItems.push(orderItem);
     });
+    console.log(orderItems)
     const totalTime = getPickUpTime(orderItems);
     const totalPrice = getTotalPrice(orderItems);
-
     function getPickUpTime(arrItems) {
       return arrItems.reduce((max, item) => {
         return max + item.Item_time;
       }, 0);}
-
-
-
-      
     $("#checkout-modal form")
       .append(
-        `<input name="orderItems" type="text" value=${JSON.stringify(
-          orderItems
-        )} hidden />`
+        `<input name="orderItems" type="text" value=${JSON.stringify(orderItems)} hidden />`
       )
       .append(
         `<input name="total_price" type="text" value=${totalPrice} hidden />`
@@ -76,6 +70,7 @@ $(() => {
 
   $("#pizzas").on("click", ".pizza-btn", function(evt) {
     $("#thank").remove();
+    $("#check-out").show();
     const pizzaId = $(this).data("id");
     const pizzaName = $(this).data("name");
     const pizzaPrice = $(this).data("price");
@@ -139,3 +134,8 @@ function hideModal(modalId) {
 
   $('.modal-backdrop').remove();
 }
+
+
+
+
+

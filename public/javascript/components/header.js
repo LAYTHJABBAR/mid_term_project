@@ -39,24 +39,6 @@ $(() => {
     .then(function( json ) {
     updateHeader(json.user);
   });
- 
-  $("header").on("click", '.menu', function() {
-    propertyListings.clearListings();
-    getAllListings()
-      .then(function(json) {
-        propertyListings.addProperties(json.properties);
-        views_manager.show('listings');
-    });
+
   });
-  $("header").on('click', '.manager', () => {
-    views_manager.show('logIn');
-  });
-  $("header").on('click', '.sign_out', () => {
-    logOut().then(() => {
-      header.update(null);
-    });
-  });
-  $('header').on('click', '.create_order', function() {
-    views_manager.show('newProperty');
-  });
- });
+
