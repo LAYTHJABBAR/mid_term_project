@@ -5,7 +5,10 @@ $(() => {
 
   function getTotalPrice(arrItems) {
     return arrItems.reduce((sum, item) => {
-      return sum + item.item_price;
+      console.log('<=========================>')
+      console.log(typeof(item.item_price, sum))
+      console.log('<==========================>')
+      return Number(sum + item.item_price);
     }, 0);
   }
   $("#check-out").click(function() {
@@ -41,7 +44,7 @@ $(() => {
         `<input name="orderItems" type="text" value=${JSON.stringify(orderItems)} hidden />`
       )
       .append(
-        `<input name="total_price" type="text" value=${totalPrice} hidden />`
+        `<input name="total_price" type="text" value=${JSON.stringify(totalPrice)} hidden />`
       );
 
     $("#total").text(`$${totalPrice}`);
@@ -78,8 +81,7 @@ $(() => {
   });
 
   $("#pizzas").on("click", ".pizza-btn", function(evt) {
-    $("#thank").remove();
-    $("#check-out").show();
+    // $("#thank").remove();
     const pizzaId = $(this).data("id");
     const pizzaName = $(this).data("name");
     const pizzaPrice = $(this).data("price");
@@ -103,6 +105,12 @@ $(() => {
     };
     // append to cart
     $("#cart").prepend(addToCart(data));
+
+    $('#cart-close').click(function(e){
+      e.preventDefault;
+      e.target.parentElement.remove()
+    
+    })
   });
 });
 
@@ -114,7 +122,11 @@ function calculateSubtotal(priceStr, quantity) {
 function addToCart(cartData) {
   const itemPrice = calculateSubtotal(cartData.price, cartData.quantity);
   return `
+  <section class= "dismissOrder">
+  <button id="cart-close" type="button" class="close cart-btn" >×</button>
   <div class="modal-header">
+
+  
    <div class="cart-item" data-quantity=${cartData.quantity} data-size=${cartData.size} data-price=${itemPrice} data-time=${cartData.time}>
      <span>Order Name : ${cartData.name}</span><br>
      <span>Quantity: </span><span>${cartData.quantity}</span><br>
@@ -124,14 +136,16 @@ function addToCart(cartData) {
      </br>
      <span>Price: </span><span>$${itemPrice}</span><br>
    </div>
+   </section>
 `;
 }
 
 
 $("#add").click(function() {
-  $("#check-out").css("display", "block")
+  $("#check-out").show();
   $(".add_form").css("display", "block")
-  hideModal("#myModal")
+  $("#thank").remove()
+  hideModal("#myModal");
   
 });
 
@@ -139,12 +153,13 @@ function hideModal(modalId) {
   $(modalId).hide();
   $('body')
   .removeClass('modal-open')
-  // .attr('style', "");
+  .attr('style', "");
 
   $('.modal-backdrop').remove();
 }
 
-
-
+$('#placeOrder').click(function(){
+hideModal('#checkout-modal')
+})
 
 

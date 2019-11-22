@@ -13,11 +13,9 @@ const sendSMS = require('../send-sms');
 module.exports = (db) => {
   router.post("/", (req, res) => {
     res.send();
-    const owner = 'Samir'
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-    console.log(req.body)
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.>>>>>>')
-
+  const qt = JSON.stringify(req.body.order_item[0].quantity)
+  const size = JSON.stringify(req.body.order_item[0].size)
+  const totalPrice = JSON.stringify(req.body.order_item[0].price)
     sendSMS(req.body.phone, req.body.total_time, req.body.name, req.body.order_item);
   });
   return router;

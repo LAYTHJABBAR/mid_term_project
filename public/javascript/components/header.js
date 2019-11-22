@@ -5,9 +5,7 @@ $(() => {
   function updateHeader(user) {
     currentUser = user;
     $pageHeader.find("#page-header__user-links").remove();
-    let userLinks;
-    if (!user) {
-      userLinks = `
+    let userLinks = `
       <nav id="page-header__user-links"  class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -25,13 +23,11 @@ $(() => {
                <li><a href="#contact" >CONTACT</a></li>
                <li><a href="#location">LOCATION</a></li>
                <li><a href="#about">ABOUT</a></li>
-               <li><a class="my_order">MY-ORDER</a></li>
           </ul>
         </div>
       </div>
      </nav>
       `
-      }
     $pageHeader.append(userLinks);
   }
   window.header.update = updateHeader;

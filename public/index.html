@@ -45,7 +45,7 @@
             <div class="form-group"><label for="qty">Total Cost</label>
             <span>Total Order Cost: </span><span id="total"></span>
             </div>
-            <button id="place_order" type="submit" class="btn btn-block" >PLACE ORDER
+            <button id="place_order" type="submit" class="btn btn-block" data-target="#cart">PLACE ORDER
                     <span class="glyphicon glyphicon-ok"></span>
             </button>
           </form>
@@ -77,7 +77,7 @@
               </div>
               <div class="form-group"><label>SIZE</label>
                 <div class="radio">
-                  <label class="radio-inline"><input type="radio" value="small" name="size">Small 9"</label>
+                  <label class="radio-inline"><input type="radio" checked="checked"  value="small" name="size">Small 9"</label>
                   <label class="radio-inline"><input type="radio" value="medium" name="size">Medium 12"</label>
                   <label class="radio-inline"><input type="radio" value="large" name="size">Large 16"</label>
                 </div>
@@ -181,7 +181,7 @@
     </section>
 
     <aside id="cart">
-        <button id="check-out" type="submit" class="btn check-out" data-toggle="modal" data-target="#checkout-modal" hidden>checkout</button>
+        <button id= "check-out" type="submit" class="btn check-out" data-toggle="modal" data-target="#checkout-modal">checkout</button>
     </aside>
 
 
