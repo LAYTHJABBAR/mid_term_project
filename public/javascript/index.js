@@ -13,6 +13,7 @@ $(() => {
     $(".cart-item").each((index, el) => {
       const $item = $(el);
       const orderItem = {
+        name: $item.data('name'),
         quantity: $item.data("quantity"),
         size: $item.data("size"),
         item_price: Number($item.data("price")),
@@ -20,13 +21,21 @@ $(() => {
       };
       orderItems.push(orderItem);
     });
-    console.log(orderItems)
+ 
+
+
     const totalTime = getPickUpTime(orderItems);
     const totalPrice = getTotalPrice(orderItems);
+
+
+
     function getPickUpTime(arrItems) {
       return arrItems.reduce((max, item) => {
         return max + item.Item_time;
       }, 0);}
+
+
+
     $("#checkout-modal form")
       .append(
         `<input name="orderItems" type="text" value=${JSON.stringify(orderItems)} hidden />`

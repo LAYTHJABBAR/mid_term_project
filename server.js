@@ -9,7 +9,8 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
-
+const Twilio = require('twilio');
+const http = require('http');
 
 
 
@@ -94,12 +95,12 @@ res.redirect('/');
   }
 });
 
-// app.post('/sms', (req, res) => {
-//   const twiml = new Twilio.twiml.MessagingResponse();
-//   twiml.message({to: '15879695887'},'The Robots are coming! Head for the hills!');
-//   res.writeHead(200, {'Content-Type': 'text/xml'});
-//   res.end(twiml.toString());
-// });
+app.post('/sms', (req, res) => {
+  const twiml = new Twilio.twiml.MessagingResponse();
+  twiml.message({to: '15879695887'},'The Robots are coming! Head for the hills!');
+  res.writeHead(200, {'Content-Type': 'text/xml'});
+  res.end(twiml.toString());
+});
 
 
 
